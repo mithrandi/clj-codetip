@@ -1,0 +1,33 @@
+version: '2'
+services:
+  traefik:
+    image: emilevauge/traefik
+    environment:
+      constraint:node: '*-n1'
+    command: >
+      -l DEBUG
+      -c /dev/null
+      --docker
+      --docker.domain pb.codehash.net
+      --docker.endpoint ${DOCKER_HOST}
+      --docker.tls
+      --docker.tls.ca /etc/docker/ca.pem
+      --docker.tls.cert /etc/docker/server-cert.pem
+      --docker.tls.key /etc/docker/server-key.pem
+      --docker.watch
+      --web
+    volumes_from:
+      - container:swarm-data
+    ports:
+      - '80:80'
+      - '8080:8080'
+      - '443:443'
+    networks:
+      - backend
+volumes:
+  swarm-data:
+    external: true
+networks:
+  backend:
+    external:
+      name: codetip-backend

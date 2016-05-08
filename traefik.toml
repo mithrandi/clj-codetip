@@ -1,0 +1,21 @@
+defaultEntryPoints = ["http", "https"]
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+    [entryPoints.http.redirect]
+    entryPoint = "https"
+  [entryPoints.https]
+  address = ":443"
+    [entryPoints.https.tls]
+[acme]
+email = "mithrandi@mithrandi.net"
+storageFile = "/srv/traefik/acme.json"
+onDemand = true
+entryPoint = "https"
+[[acme.domains]]
+  main = "pb.codehash.net"
+[[acme.domains]]
+  main = "traefik.pb.codehash.net"
+[web]
+address = ":8080"
+ReadOnly = true

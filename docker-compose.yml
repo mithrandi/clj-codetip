@@ -1,0 +1,18 @@
+version: '2'
+services:
+  web1:
+    image: idnar/codetip
+    environment:
+      - 'constraint:node==*-n1'
+    labels:
+      traefik.backend: 'codetip'
+      traefik.frontend.rule: 'Host:pb.codehash.net'
+      traefik.frontend.passHostHeader: 'true'
+    networks:
+      - backend
+    volumes:
+      - /srv/codetip/db
+networks:
+  backend:
+    external:
+      name: codetip-backend

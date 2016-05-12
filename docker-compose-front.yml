@@ -2,6 +2,7 @@ version: '2'
 services:
   traefik:
     image: emilevauge/traefik
+    restart: always
     environment:
       constraint:node: '*-n1'
     command: >

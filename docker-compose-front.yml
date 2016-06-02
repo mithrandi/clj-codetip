@@ -5,7 +5,6 @@ services:
     restart: always
     environment:
       constraint:node: '*-n1'
-      LANG: 'C.UTF-8'
     command: >
       -l DEBUG
       -c /dev/null

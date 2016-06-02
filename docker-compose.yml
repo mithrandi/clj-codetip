@@ -5,6 +5,7 @@ services:
     restart: always
     environment:
       - 'constraint:node==*-n1'
+      - 'LANG=C.UTF-8'
     labels:
       traefik.backend: 'codetip'
       traefik.frontend.rule: 'Host:pb.codehash.net'
@@ -12,8 +13,11 @@ services:
     networks:
       - backend
     volumes:
-      - /srv/codetip/db
+      - codetip-data:/srv/codetip/db
 networks:
   backend:
     external:
       name: codetip-backend
+volumes:
+  codetip-data:
+    driver: local

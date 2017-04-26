@@ -1,0 +1,4 @@
+FROM idnar/codetip:latest
+COPY ["jdbc.sh", "/srv/codetip/jdbc.sh"]
+ENTRYPOINT []
+CMD . /srv/codetip/jdbc.sh && /usr/bin/java -jar /srv/codetip/clj-codetip.jar --port ${PORT:?} --database-uri ${JDBC_DATABASE_URL:?}

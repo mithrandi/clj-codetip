@@ -6,7 +6,6 @@ created      TIMESTAMP,
 expires      TIMESTAMP,
 content      TEXT,
 content_type TEXT);
-
-CREATE INDEX pastes_index (
-id
+--;;
+CREATE INDEX pastes_expiry ON pastes (
 expires);

@@ -23,7 +23,7 @@
                  [joplin.lein "0.2.18"]
                  [jarohen/chime "0.2.1"]
                  [org.xerial/sqlite-jdbc "3.16.1"]
-                 [org.postgresql/postgresql "42.0.0"]]
+                 [org.postgresql/postgresql "42.0.0.jre7"]]
   :main clj-codetip.core
   :aot [clj-codetip.streams.limited-input-stream clj-codetip.core]
   :profiles {:dev {:env  {:codetip-dev     true
